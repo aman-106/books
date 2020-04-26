@@ -1,0 +1,105 @@
+:root {
+  --primary-color: #20bf6b;
+  --secondary-color: black;
+}
+
+body {
+  counter-reset: chapters;
+}
+
+.books-overview {
+  background-color: white;
+  color: var(--secondary-color);
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* for title */
+
+div[class^='chapters-list__item'] .chapters-list__item__title {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 2px solid rgb(243, 238, 238);;
+}
+
+div[class^='chapters-list__item'] .chapters-list__item__title:hover{
+  background-color: #63f5a8;
+  cursor: pointer;
+}
+
+
+
+.books-overview .chapters-list .chapters-list__item__title::before {
+  counter-increment: chapters;
+  content: counter(chapters) ": ";
+}
+
+/* for chapters list */
+
+
+.books-overview .chapters-list,
+.books-overview .chapters-list:hover {
+  padding: 20px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* for sections */
+.books-overview .chapters-list div[class^='chapters-list__item__section'] {
+  width: 50%;
+  padding: 10px;
+  counter-reset: section;
+  margin: 10px auto;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.books-overview .chapters-list div[class^='chapters-list__item__section'] .section-info::before {
+  /* counter-increment: chapters; */
+  counter-increment: section;
+  content: counter(section) ": ";
+}
+
+
+.chapters-list .chapters-list__item__section--open {
+  border: 1px solid #20bf6b;
+  display: block;
+}
+
+.chapters-list .chapters-list__item__section--close {
+  display: none;
+}
+
+.chapters-list__item--completed .chapters-list__item__title::after{
+  content: '\2713';
+  color: var(--primary-color);
+  padding-left: 5px;
+}
+
+/* for sections card */
+
+.section-info {
+  padding: 5px;
+
+}
+
+.section-info::after{
+  content: '\2713';
+  padding-left: 5px;
+}
+
+.section-info.in-progess::after {
+  color: orange;
+}
+
+.section-info.not-started::after {
+  color: grey;
+}
+
+.section-info.complete::after {
+  color: var(--primary-color);
+
+}

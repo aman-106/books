@@ -20,7 +20,16 @@ class ChapterList {
     chapterList = chapterList.sort(function (bookA, bookB) { return bookA.sequenceNO - bookB.sequenceNO });
     for (const chapter of chapterList) {
       const chapterElem = document.createElement('div');
-      const clsx = chapter.completeCount === chapter.childrenCount ? 'chapters-list__item--completed' : 'chapters-list__item';
+      let clsx = 'chapters-list__item';
+      if (chapter.completeCount === chapter.childrenCount) {
+        clsx = 'chapters-list__item--completed';
+      }
+      else if (chapter.completeCount === 0) {
+        clsx = 'chapters-list__item--begin';
+      } else {
+        clsx = 'chapters-list__item--inprogess';
+      }
+      // chapter.completeCount === chapter.childrenCount ? 'chapters-list__item--completed' : 'chapters-list__item';
       chapterElem.className = clsx;
       chapterElem.setAttribute('data-id', chapter.id);
       chapterElem.getAttribute

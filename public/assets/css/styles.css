@@ -23,10 +23,11 @@ div[class^='chapters-list__item'] .chapters-list__item__title {
   font-size: 18px;
   font-weight: 600;
   padding: 10px;
-  border-bottom: 2px solid rgb(243, 238, 238);;
+  border-bottom: 2px solid rgb(243, 238, 238);
+  ;
 }
 
-div[class^='chapters-list__item'] .chapters-list__item__title:hover{
+div[class^='chapters-list__item'] .chapters-list__item__title:hover {
   background-color: #63f5a8;
   cursor: pointer;
 }
@@ -54,7 +55,7 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
   padding: 10px;
   counter-reset: section;
   margin: 10px auto;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
 }
 
 .books-overview .chapters-list div[class^='chapters-list__item__section'] .section-info::before {
@@ -74,11 +75,24 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
   display: none;
 }
 
-.chapters-list__item--completed .chapters-list__item__title::after{
+div[class^='chapters-list__item'] .chapters-list__item__title::after {
   content: '\2713';
-  color: var(--primary-color);
   padding-left: 5px;
 }
+
+.chapters-list__item--completed .chapters-list__item__title::after {
+  color: var(--primary-color);
+}
+
+.chapters-list__item--begin .chapters-list__item__title::after {
+  color: grey;
+}
+
+.chapters-list__item--inprogess .chapters-list__item__title::after {
+  color: orange;
+}
+
+
 
 /* for sections card */
 
@@ -87,7 +101,7 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
 
 }
 
-.section-info::after{
+.section-info::after {
   content: '\2713';
   padding-left: 5px;
 }
@@ -107,11 +121,12 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
 
 @keyframes slide-left {
   0% {
-      opacity: 0;
-      transform: translateX(20px);
+    opacity: 0;
+    transform: translateX(20px);
   }
+
   100% {
-      opacity: 1;
-      transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }

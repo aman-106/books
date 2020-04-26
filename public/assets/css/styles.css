@@ -11,7 +11,7 @@ body {
   background-color: white;
   color: var(--secondary-color);
   font-size: 18px;
-  padding: 10px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +54,7 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
   padding: 10px;
   counter-reset: section;
   margin: 10px auto;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)
 }
 
 .books-overview .chapters-list div[class^='chapters-list__item__section'] .section-info::before {
@@ -67,6 +67,7 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
 .chapters-list .chapters-list__item__section--open {
   border: 1px solid #20bf6b;
   display: block;
+  animation: slide-left 0.4s ease;
 }
 
 .chapters-list .chapters-list__item__section--close {
@@ -102,4 +103,15 @@ div[class^='chapters-list__item'] .chapters-list__item__title:hover{
 .section-info.complete::after {
   color: var(--primary-color);
 
+}
+
+@keyframes slide-left {
+  0% {
+      opacity: 0;
+      transform: translateX(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
 }

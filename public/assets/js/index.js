@@ -59,21 +59,30 @@ class ChapterList {
 
 class SectionInfo {
   render(sectionsInfo, sectionInfoContainer) {
-    sectionsInfo = sectionsInfo.sort(function (chapA, chapB) { return chapA.sequenceNO - chapB.sequenceNO });
-    for (const section of sectionsInfo) {
-      const sectionELem = document.createElement('div');
-      let className = 'section-info ';
-      if (section.status === 'IN_PROGRESS') {
-        className += ' in-progess'
+    if (sectionsInfo.length) {
+      sectionsInfo = sectionsInfo.sort(function (chapA, chapB) { return chapA.sequenceNO - chapB.sequenceNO });
+      for (const section of sectionsInfo) {
+        const sectionELem = document.createElement('div');
+        let className = 'section-info ';
+        if (section.status === 'IN_PROGRESS') {
+          className += ' in-progess'
+        }
+        else if (section.status === 'NOT_STARTED') {
+          className += 'not-started'
+        } else {
+          className += 'complete';
+        }
+        sectionELem.className = className;
+        sectionELem.innerText = section.title;
+        sectionInfoContainer.appendChild(sectionELem);
       }
-      else if (section.status === 'NOT_STARTED') {
-        className += 'not-started'
-      } else {
-        className += 'complete';
-      }
+    } else {
+      const sectionELem = document.createElement('h5');
+      let className = 'section-info-none';
       sectionELem.className = className;
-      sectionELem.innerText = section.title;
+      sectionELem.innerText = "No Sections Found";
       sectionInfoContainer.appendChild(sectionELem);
+
     }
   }
 }
